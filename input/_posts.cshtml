@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">        
+        @{
+            bool first = true;
+        }
+        @foreach (IDocument post in Document.GetChildren())
+        {
+            if (!first)
+            {
+                <hr>
+            }
+            first = false;
+            string excerpt = post.GetString(Statiq.Html.HtmlKeys.Excerpt);
+            <div class="post-preview">
+                <h2 class="post-title">@Html.DocumentLink(post)</h2>
+                @if(Document.ContainsKey("Lead"))
+                {
+                    <h3 class="post-subtitle">@Document.GetString("Lead")</h3>
+                }
+                <p class="post-meta">Posted on @post.GetDateTime("Published").ToLongDateString()</p>                
+                @if (!string.IsNullOrEmpty(excerpt))
+                {
+                    @Html.Raw(excerpt)
+                    <p class="small"><a href="@Context.GetLink(post)">Read more...</a></p>
+                }
+            </div>
+        }
+        
+        @{
+            IDocument older = Document.GetDocument(Keys.Next);
+            IDocument newer = Document.GetDocument(Keys.Previous);
+        }
+        @if (older != null || newer != null)
+        {
+            <hr>
+            <div class="d-flex flex-row justify-content-between">
+                <div>
+                    @if (older != null)
+                    {
+                        <a class="btn btn-primary" href="@Context.GetLink(older)" role="button">Older</a>
+                    }
+                </div>
+                <div>
+                    @if (newer != null)
+                    {
+                        <a class="btn btn-primary" href="@Context.GetLink(newer)" role="button">Newer</a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

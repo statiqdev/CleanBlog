@@ -1,0 +1,12 @@
+Order: 0
+ArchiveSources: "posts/*"
+ArchiveDestination: >
+  => GetInt("Index") <= 1 ? $"index.html" : $"page/{GetInt("Index")}.html"
+ArchivePageSize: 3
+ArchiveOrderKey: Published
+ArchiveOrderDescending: true
+Title: ""
+ArchiveTitle: >
+  => $"{(GetInt("Index") > 1 ? ("Page " + GetInt("Index")) : null)}"
+---
+@Html.Partial("/_posts.cshtml", Document)
