@@ -1,5 +1,5 @@
 Order: 0
-ArchiveSources: "posts/*"
+ArchiveSources: => PostSources
 ArchiveDestination: >
   => GetInt("Index") <= 1 ? $"index.html" : $"page/{GetInt("Index")}.html"
 ArchivePageSize: 3

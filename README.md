@@ -2,13 +2,14 @@ This is a clean blogging theme adapted from https://github.com/StartBootstrap/st
 
 # Settings
 
-- `SiteTitle`
+- `SiteTitle`: The title of the site.
+- `PostSources`: A globbing pattern where to find blog posts (defaults to `posts/*`).
 
 ## Calculated
 
 The following keys are calculated in `settings.yml` and can be overridden by providing new values in your settings or front matter.
 
-- `HeadTitle`
+- `PageTitle`: The title that's set for the current page and shown in the browser (by default this is "[Site Title] - [Document Title]").
 
 # Navigation
 

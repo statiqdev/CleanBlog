@@ -1,7 +1,9 @@
-HeadTitle: |
+SiteTitle: My Blog
+PageTitle: |
   =>
   {
-    string siteTitle = GetString("SiteTitle");
+    string siteTitle = Context.Settings.GetString("SiteTitle");
     string title = GetString("Title");
     return string.IsNullOrWhiteSpace(siteTitle) ? title : (string.IsNullOrWhiteSpace(title) ? siteTitle : $"{siteTitle} - {title}");
   }
+PostSources: posts/*
