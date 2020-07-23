@@ -1,0 +1,40 @@
+@{
+    string backgroundImage = null;
+    if (Document.ContainsKey(WebKeys.Image))
+    {
+        backgroundImage = $"background-image: url(\"{Document.GetString(WebKeys.Image)}\")";
+    }
+}
+<header class="masthead" style="@backgroundImage">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="site-heading">
+          @{
+              string title = Document.GetString("HeaderTitle");
+              if (string.IsNullOrEmpty(title))
+              {
+                  title = Document.GetString(WebKeys.Title);
+              }
+          }
+          <h1>@title</h1>
+          @if (Document.ContainsKey("Lead"))
+          {
+            <h2 class="subheading">@Document.GetString("Lead")</h2>
+          }
+          else if (Document.ContainsKey(WebKeys.Description))
+          {
+            <h2 class="subheading">@Document.GetString(WebKeys.Description)</h2>
+          }
+          @if (Outputs[nameof(Statiq.Web.Pipelines.Content)].FilterSources(Context.GetString("PostSources")).Contains(Document))
+          {
+              // This is a blog post so show extra data
+              <p class="post-meta">Published on @Document.GetDateTime(WebKeys.Published).ToLongDateString()</p>
+              <p>TODO: tags</p>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

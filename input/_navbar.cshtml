@@ -1,0 +1,8 @@
+<ul class="navbar-nav ml-auto">
+    @foreach(IDocument doc in Outputs[nameof(Statiq.Web.Pipelines.Content)].RemoveTreePlaceholders())
+    {
+        <li class="nav-item">
+            @Html.DocumentLink(doc, new Dictionary<object, object> { { "class", "nav-link" } })
+        </li>
+    }
+</ul>

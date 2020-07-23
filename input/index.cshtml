@@ -8,5 +8,6 @@ ArchiveOrderDescending: true
 Title: ""
 ArchiveTitle: >
   => $"{(GetInt("Index") > 1 ? ("Page " + GetInt("Index")) : null)}"
+HeaderTitle: => SiteTitle
 ---
 @Html.Partial("/_posts.cshtml", Document)
