@@ -7,3 +7,4 @@ PageTitle: |
     return string.IsNullOrWhiteSpace(siteTitle) ? title : (string.IsNullOrWhiteSpace(title) ? siteTitle : $"{siteTitle} - {title}");
   }
 PostSources: posts/*
+HeaderTitle: => GetString("Title")

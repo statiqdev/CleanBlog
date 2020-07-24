@@ -2,36 +2,26 @@
     string backgroundImage = null;
     if (Document.ContainsKey(WebKeys.Image))
     {
-        backgroundImage = $"background-image: url(\"{Document.GetString(WebKeys.Image)}\")";
+        backgroundImage = $"background-image: url(\"{Context.GetLink(Document.GetString(WebKeys.Image))}\")";
     }
+    bool isPost = Outputs[nameof(Statiq.Web.Pipelines.Content)].FilterSources(Context.GetString("PostSources")).Contains(Document);
+    string description = Document.WithoutSettings().GetString("Lead") ?? Document.WithoutSettings().GetString(WebKeys.Description);
 }
 <header class="masthead" style="@backgroundImage">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="site-heading">
-          @{
-              string title = Document.GetString("HeaderTitle");
-              if (string.IsNullOrEmpty(title))
-              {
-                  title = Document.GetString(WebKeys.Title);
-              }
-          }
-          <h1>@title</h1>
-          @if (Document.ContainsKey("Lead"))
+      <div class="col-md-12">
+        <div class="@(isPost ? "post-heading" : "site-heading")">
+          <h1>@Document.GetString("Title")</h1>
+          @if (!string.IsNullOrEmpty(description))
           {
-            <h2 class="subheading">@Document.GetString("Lead")</h2>
+            <h2 class="subheading">@description</h2>
           }
-          else if (Document.ContainsKey(WebKeys.Description))
-          {
-            <h2 class="subheading">@Document.GetString(WebKeys.Description)</h2>
-          }
-          @if (Outputs[nameof(Statiq.Web.Pipelines.Content)].FilterSources(Context.GetString("PostSources")).Contains(Document))
+          @if (isPost)
           {
               // This is a blog post so show extra data
-              <p class="post-meta">Published on @Document.GetDateTime(WebKeys.Published).ToLongDateString()</p>
-              <p>TODO: tags</p>
+              <div class="meta">Published on @Document.GetDateTime(WebKeys.Published).ToLongDateString()</div>
           }
         </div>
       </div>

@@ -2,9 +2,20 @@ This is a clean blogging theme adapted from https://github.com/StartBootstrap/st
 
 # Settings
 
+## Global
+
+These can be set in a settings file.
+
 - `SiteTitle`: The title of the site.
 - `PostSources`: A globbing pattern where to find blog posts (defaults to `posts/*`).
-- `HeaderTitle`: Can be set on a page to change the title displayed in the header (defaults to the same value as `Title`).
+
+## Page
+
+These can be set in front matter, a sidecar file, etc.
+
+- `Title`: The title of the page (or post).
+- `Description`: The description of the page.
+- `Lead`: Descriptive text that expands on the title, usually used for posts.
 
 ## Calculated
 

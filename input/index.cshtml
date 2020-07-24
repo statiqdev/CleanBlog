@@ -5,9 +5,15 @@ ArchiveDestination: >
 ArchivePageSize: 3
 ArchiveOrderKey: Published
 ArchiveOrderDescending: true
-Title: ""
 ArchiveTitle: >
-  => $"{(GetInt("Index") > 1 ? ("Page " + GetInt("Index")) : null)}"
-HeaderTitle: => SiteTitle
+  =>
+  {
+    string title = GetString("Title");
+    if (GetInt("Index") > 1)
+    {
+      title = string.IsNullOrEmpty(title) ? ("Page " + GetInt("Index")) : (title + " (" + "Page " + GetInt("Index") + ")");
+    }
+    return title;
+  }
 ---
 @Html.Partial("/_posts.cshtml", Document)
