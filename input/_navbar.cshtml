@@ -1,8 +1,12 @@
 <ul class="navbar-nav ml-auto">
-    @foreach(IDocument doc in Outputs[nameof(Statiq.Web.Pipelines.Content)].RemoveTreePlaceholders())
+    @foreach(IDocument doc in Outputs.FromPipelines(nameof(Statiq.Web.Pipelines.Content), nameof(Statiq.Web.Pipelines.Archives)).RemoveTreePlaceholders().FilterDestinations("*"))
     {
-        <li class="nav-item">
-            @Html.DocumentLink(doc, new Dictionary<object, object> { { "class", "nav-link" } })
-        </li>
+        // Don't add the home page to the nav bar
+        if (doc.Destination != "index.html")
+        {
+            <li class="nav-item">
+                @Html.DocumentLink(doc, new Dictionary<object, object> { { "class", "nav-link" } })
+            </li>
+        }
     }
 </ul>

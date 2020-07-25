@@ -1,0 +1,22 @@
+ArchiveSources: => PostSources
+ArchiveKey: Tags
+ArchiveDestination: >
+  => GetInt("Index") <= 1 ? $"tags/{NormalizedPath.OptimizeFileName(GetString("GroupKey"))}/index.html" : $"tags/{NormalizedPath.OptimizeFileName(GetString("GroupKey"))}/{GetInt("Index")}.html"
+ArchivePageSize: 10
+ArchiveOrderKey: Published
+ArchiveOrderDescending: true
+Title: Tags
+ArchiveTitle: >
+  => GetInt("Index") <= 1 ? GetString("GroupKey") : (GetString("GroupKey") + " (" + "Page " + GetInt("Index") + ")")
+---
+@if (Document.ContainsKey(Keys.GroupKey))
+{
+    @Html.Partial("/_posts.cshtml", Document)
+}
+else
+{
+    @foreach (IDocument tag in Document.GetChildren())
+    {        
+        <div>@Html.DocumentLink(tag)</div>
+    }
+}

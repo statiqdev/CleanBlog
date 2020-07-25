@@ -16,23 +16,23 @@
         }
         
         @{
-            IDocument older = Model.GetDocument(Keys.Next);
             IDocument newer = Model.GetDocument(Keys.Previous);
+            IDocument older = Model.GetDocument(Keys.Next);
         }
         @if (older != null || newer != null)
         {
             <hr>
             <div class="d-flex flex-row justify-content-between">
                 <div>
-                    @if (older != null)
+                    @if (newer != null)
                     {
-                        <a class="btn btn-primary" href="@Context.GetLink(older)" role="button">Older</a>
+                        <a class="btn btn-primary" href="@Context.GetLink(newer)" role="button">Newer <i class="fas fa-angle-double-left"></i></a>
                     }
                 </div>
                 <div>
-                    @if (newer != null)
+                    @if (older != null)
                     {
-                        <a class="btn btn-primary" href="@Context.GetLink(newer)" role="button">Newer</a>
+                        <a class="btn btn-primary" href="@Context.GetLink(older)" role="button">Older <i class="fas fa-angle-double-right"></i></a>
                     }
                 </div>
             </div>
