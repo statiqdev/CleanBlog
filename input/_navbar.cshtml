@@ -1,5 +1,5 @@
 <ul class="navbar-nav ml-auto">
-    @foreach(IDocument doc in Outputs.FromPipelines(nameof(Statiq.Web.Pipelines.Content), nameof(Statiq.Web.Pipelines.Archives)).RemoveTreePlaceholders().FilterDestinations("*"))
+    @foreach(IDocument doc in Outputs.FromPipelines(nameof(Statiq.Web.Pipelines.Content), nameof(Statiq.Web.Pipelines.Archives)).FilterDestinations("*"))
     {
         // Don't add the home page to the nav bar
         if (doc.Destination != "index.html")
