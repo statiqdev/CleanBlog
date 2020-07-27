@@ -7,17 +7,32 @@ ArchivePageSize: 10
 ArchiveOrderKey: Published
 ArchiveOrderDescending: true
 Title: Tags
-ArchiveTitle: >
-  => GetInt("Index") <= 1 ? GetString("GroupKey") : (GetString("GroupKey") + " (" + "Page " + GetInt("Index") + ")")
+ArchiveTitle: => GroupKey
 ---
 @if (Document.ContainsKey(Keys.GroupKey))
 {
-    @Html.Partial("/_posts.cshtml", Document)
+    <div class="container-sm-height">
+        <div class="row row-sm-height">
+            <div class="col-6 right-border col-sm-height">
+                @Html.Partial("/_posts.cshtml", Document)
+                <hr class="visible-xs-block" />
+            </div>
+            <div class="col-4 col-sm-height">
+                @foreach (IDocument tag in Outputs["tags.html"].First().GetChildren().OrderByDescending(x => x.GetChildren().Count()))
+                {
+                    string badgeStyle = Document.GetString(Keys.GroupKey).Equals(tag.GetTitle(), StringComparison.OrdinalIgnoreCase) ? "badge-dark" : "badge-light";
+                    string postCount = tag.GetChildren().Count().ToString();
+                    <a href="@Context.GetLink(tag)" class="badge @badgeStyle"> @tag.GetTitle() (@postCount)</a>
+                }
+            </div>
+        </div>
+    </div>
 }
 else
-{
-    @foreach (IDocument tag in Document.GetChildren())
-    {        
-        <div>@Html.DocumentLink(tag)</div>
+{ 
+    @foreach (IDocument tag in Document.GetChildren().OrderByDescending(x => x.GetChildren().Count()))
+    {
+        string postCount = tag.GetChildren().Count().ToString();
+        <a role="button" href="@Context.GetLink(tag)" class="badge badge-light"> @tag.GetTitle() (@postCount)</a>
     }
 }

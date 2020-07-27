@@ -5,15 +5,6 @@ ArchiveDestination: >
 ArchivePageSize: 3
 ArchiveOrderKey: Published
 ArchiveOrderDescending: true
-ArchiveTitle: >
-  =>
-  {
-    string title = GetString("Title");
-    if (GetInt("Index") > 1)
-    {
-      title = string.IsNullOrEmpty(title) ? ("Page " + GetInt("Index")) : (title + " (" + "Page " + GetInt("Index") + ")");
-    }
-    return title;
-  }
+ArchiveTitle: => Title
 ---
 @Html.Partial("/_posts.cshtml", Document)

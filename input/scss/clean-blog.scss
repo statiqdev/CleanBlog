@@ -1,4 +1,6 @@
-@import "variables.scss";
+@import "../vendor/bootstrap/scss/functions.scss";
+@import "../vendor/bootstrap/scss/variables.scss";
+@import "../vendor/bootstrap/scss/mixins.scss";
 @import "mixins.scss";
 @import "global.scss";
 @import "navbar.scss";

@@ -17,11 +17,11 @@
   <title>@Document.GetString("PageTitle")</title>
 
   @{
-    @foreach (IDocument rssFeed in Outputs[nameof(Statiq.Web.Pipelines.Feeds)].FilterDestinations("**/*.rss"))
+    @foreach (IDocument rssFeed in Outputs["**/*.rss"])
     {
       <link type="application/rss+xml" rel="alternate" title="@rssFeed.GetString(WebKeys.Title)" href="@rssFeed.GetLink()" />
     }
-    @foreach (IDocument atomFeed in Outputs[nameof(Statiq.Web.Pipelines.Feeds)].FilterDestinations("**/*.atom"))
+    @foreach (IDocument atomFeed in Outputs["**/*.atom"])
     {
       <link type="application/atom+xml" rel="alternate" title="@atomFeed.GetString(WebKeys.Title)" href="@atomFeed.GetLink()" />
     }
@@ -44,7 +44,7 @@
   <link rel="icon" href="@Context.GetLink("/favicon.ico")" type="image/x-icon">
 
   <!-- Bootstrap core CSS -->
-  <link href="@Context.GetLink("/vendor/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
+  <link href="@Context.GetLink("/vendor/bootstrap/scss/bootstrap.css")" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
   <link href="@Context.GetLink("/vendor/fontawesome-free/css/all.min.css")" rel="stylesheet" type="text/css">

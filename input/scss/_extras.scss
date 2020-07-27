@@ -1,16 +1,15 @@
-.masthead {
-    background-color: #555555;
+header {
+    &.masthead {
+        background-color: darken($primary, 25%);
+        background: linear-gradient(180deg, lighten($primary, 25%) 0%, darken($primary, 25%) 100%);
+    }
+    &.masthead .subheading {
+        line-height: 1.6 !important;
+    }
+    &.masthead *, &.masthead .post-heading * {
+        text-shadow: 0 0 80px rgba(0,0,0,0.8);
+    }
 }
-.masthead .subheading {
-    line-height: 1.6 !important;
-}
-.masthead *, .masthead .post-heading * {
-    text-shadow: 0 0 80px rgba(0,0,0,0.8);
-}
-.masthead.background--light .site-heading *, .masthead.background--light .post-heading * {
-    text-shadow: 0 0 80px rgba(255,255,255,0.8);
-}
-.masthead.background--light *, .navbar:not(.is-fixed).background--light * { color: #000 !important; }
 hr.background--light { border-color: #000 !important; }
 .btn.background--light { color: initial !important }
 .btn {
@@ -96,6 +95,9 @@ code {
     border: none;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
+}
+.badge {    
+  font-family: sans-serif;
 }
 /* Awsome same-height Bootstrap columns from http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsive-columns-of-same-height */
 

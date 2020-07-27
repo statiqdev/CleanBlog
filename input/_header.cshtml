@@ -4,7 +4,7 @@
     {
         backgroundImage = $"background-image: url(\"{Context.GetLink(Document.GetString(WebKeys.Image))}\")";
     }
-    bool isPost = Outputs[nameof(Statiq.Web.Pipelines.Content)].FilterSources(Context.GetString("PostSources")).Contains(Document);
+    bool isPost = Outputs.FilterSources(Context.GetString("PostSources")).Contains(Document);
     string description = Document.WithoutSettings().GetString("Lead") ?? Document.WithoutSettings().GetString(WebKeys.Description);
 }
 <header class="masthead" style="@backgroundImage">
@@ -13,7 +13,13 @@
     <div class="row">
       <div class="col-md-12">
         <div class="@(isPost ? "post-heading" : "site-heading")">
-          <h1>@Document.GetString("Title")</h1>
+          <h1>
+            @Document.GetString("Title")
+            @if (Document.GetInt(Keys.Index) > 1)
+            {
+              <small>(Page @Document.GetString(Keys.Index))</small>
+            }
+          </h1>
           @if (!string.IsNullOrEmpty(description))
           {
             <h2 class="subheading">@description</h2>
@@ -22,6 +28,17 @@
           {
               // This is a blog post so show extra data
               <div class="meta">Published on @Document.GetDateTime(WebKeys.Published).ToLongDateString()</div>
+              @if (Document.ContainsKey("Tags"))
+              {
+                <div class="mt-3">
+                  @foreach (IDocument tag in Document.GetList<string>("Tags")
+                    .Select(x => Outputs["tags.html"].First().GetChildren().FirstOrDefault(y => y.GetTitle().Equals(x, StringComparison.OrdinalIgnoreCase)))
+                    .Where(x => x != null))
+                  {
+                      <a href="@Context.GetLink(tag)" class="badge badge-light"> @tag.GetTitle()</a>
+                  }
+                </div>
+              }
           }
         </div>
       </div>
