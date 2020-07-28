@@ -1,15 +1,7 @@
 @model IDocument
 
-@{
-    bool first = true;
-}
 @foreach (IDocument post in Model.GetChildren())
 {
-    if (!first)
-    {
-        <hr>
-    }
-    first = false;
     @Html.Partial("/_post.cshtml", post)
 }
 
@@ -19,19 +11,19 @@
 }
 @if (older != null || newer != null)
 {
-    <hr>
-    <div class="d-flex flex-row justify-content-between">
-        <div>
+    <div>
+        <div class="float-sm-left">
             @if (newer != null)
             {
                 <a class="btn btn-primary" href="@Context.GetLink(newer)" role="button">Newer <i class="fas fa-angle-double-left"></i></a>
             }
         </div>
-        <div>
+        <div class="float-sm-right">
             @if (older != null)
             {
                 <a class="btn btn-primary" href="@Context.GetLink(older)" role="button">Older <i class="fas fa-angle-double-right"></i></a>
             }
         </div>
+        <div class="clearfix"></div>
     </div>
 }

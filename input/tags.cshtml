@@ -1,4 +1,4 @@
-ArchiveSources: => PostSources
+ArchiveSources: => GetString("PostSources")
 ArchiveKey: Tags
 ArchiveKeyComparer: => StringComparer.OrdinalIgnoreCase.ToConvertingEqualityComparer()
 ArchiveDestination: >
@@ -7,7 +7,7 @@ ArchivePageSize: 10
 ArchiveOrderKey: Published
 ArchiveOrderDescending: true
 Title: Tags
-ArchiveTitle: => GroupKey
+ArchiveTitle: => GetString("GroupKey")
 ---
 @if (Document.ContainsKey(Keys.GroupKey))
 {
@@ -15,7 +15,6 @@ ArchiveTitle: => GroupKey
         <div class="row row-sm-height">
             <div class="col-6 right-border col-sm-height">
                 @Html.Partial("/_posts.cshtml", Document)
-                <hr class="visible-xs-block" />
             </div>
             <div class="col-4 col-sm-height">
                 @foreach (IDocument tag in Outputs["tags.html"].First().GetChildren().OrderByDescending(x => x.GetChildren().Count()))

@@ -10,6 +10,10 @@ header {
         text-shadow: 0 0 80px rgba(0,0,0,0.8);
     }
 }
+footer {
+    padding: 20px 0;
+    line-height: 1em;
+}
 hr.background--light { border-color: #000 !important; }
 .btn.background--light { color: initial !important }
 .btn {
@@ -28,6 +32,13 @@ hr.background--light { border-color: #000 !important; }
 }
 .sidebar li {
     margin-bottom: 8px;
+}
+.post-title {
+    margin-bottom: 0;
+}
+.post-subtitle {
+    font-family: $font-family-sans-serif;
+    font-size: $h4-font-size;
 }
 .post-list > a {
     color: #333333;
@@ -97,7 +108,7 @@ code {
     border-top-right-radius: 0px;
 }
 .badge {    
-  font-family: sans-serif;
+  font-family: $font-family-sans-serif;
 }
 /* Awsome same-height Bootstrap columns from http://www.minimit.com/articles/solutions-tutorials/bootstrap-3-responsive-columns-of-same-height */
 

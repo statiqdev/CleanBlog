@@ -1,4 +1,4 @@
-FeedSources: => PostSources
+FeedSources: => GetString("PostSources")
 FeedOrderKey: Published
 FeedOrderDescending: true
 FeedSize: 10
