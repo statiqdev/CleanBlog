@@ -37,5 +37,7 @@
         this.previousTop = currentTop;
       });
   }
+    
+  quicklink.listen();
 
 })(jQuery); // End of use strict

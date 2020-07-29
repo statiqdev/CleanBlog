@@ -1,4 +1,20 @@
-This is a clean blogging theme adapted from https://github.com/StartBootstrap/startbootstrap-clean-blog. Currently under heavy development and not ready for use.
+This is a clean blogging theme adapted from https://github.com/StartBootstrap/startbootstrap-clean-blog.
+
+# Installation
+
+Statiq themes go in a `theme` folder alongside your `input` folder. If your site is inside a git repository, you can add the theme as a git submodule:
+
+```
+git submodule add https://github.com/statiqdev/CleanBlog.git theme
+```
+
+Alternatively you can clone the theme directly:
+
+```
+git clone https://github.com/statiqdev/CleanBlog.git theme
+```
+
+Once inside the `theme` folder, Statiq will automatically recognize the theme. If you want to tweak the theme you can edit files directly in the `theme` folder or copy them to your `input` folder and edit them there.
 
 # Settings
 
@@ -20,6 +36,7 @@ These can be set in front matter, a sidecar file, etc.
 - `Tags`: Tags for a blog post.
 - `Published`: The date a page or post was published.
 - `Image`: Path to an image for the page or post.
+- `ShowInNavbar`: Set to `false` to hide the page in the top navigation.
 
 ## Calculated
 
@@ -41,6 +58,7 @@ Replace or copy any of these Razor partials in your `input` folder to override s
 - `/_post-footer.cshtml`: Displays content at the bottom of a post (for example, a comments section).
 - `/_sidebar.cshtml`: Additional content for the sidebar on the main index page (ignored if you provide your own index page).
 - `/_footer.cshtml`: The footer at the bottom of all pages.
+- `/_scripts`: Additional scripts or other content at the bottom of the page.
 
 # Sections
 
@@ -50,6 +68,7 @@ In addition to globally changing sections of the site using the partials above y
 - `Navigation`: The navigation at the top of the layout.
 - `Header`: The header section of the page.
 - `Footer`: The footer section of the page.
+- `Scripts`: Additional scripts or other content at the bottom of the page.
 
 # Index Page
 
@@ -59,3 +78,47 @@ include any blog posts since the default index page is an archive of posts.
 # Styles
 
 To add new styles or override existing ones, create an input file at `scss/_overrides.scss` and add Sass styles there.
+
+# Porting From Wyam
+
+This blogging these is roughly compatible with the Wyam CleanBlog theme. Some notes if you're porting:
+
+- You will need to [create a Statiq Web app](https://statiq.dev/web/) at the root of your site (you can keep the `input` directory).
+  - Run `dotnet new console` at the root of your site.
+  - Run `dotnet add package Statiq.Web --version x.y.z` (using the [latest Statiq Web version](https://www.nuget.org/packages/Statiq.Web)).
+  - Change the generated `Program` class in `Program.cs` to:
+
+```
+using System;
+using System.Threading.Tasks;
+using Statiq.App;
+using Statiq.Web;
+
+namespace ...
+{
+  public class Program
+  {
+    public static async Task<int> Main(string[] args) =>
+      await Bootstrapper
+        .Factory
+        .CreateWeb(args)
+        .RunAsync();
+  }
+}
+```
+
+- Follow the [installation instructions above](#installation) to install the theme into your site.
+
+- Create a `settings.yml` file at the root of your site and copy over settings from your `config.wyam` file
+  - Since the new settings file is YAML you don't need to prefix strings or anything, for example `Settings[Keys.Host] = "daveaglick.com";` becomes `Host: daveaglick.com`.
+  - If you defined a global "Title" setting in `config.wyam` the new theme should set "SiteTitle" instead (and if not, a "SiteTitle" should be defined).
+  - If you defined an "Intro" setting, that should be placed in a new `_index.yml` file in your `input` directory with a key of "Description".
+
+- If you created an `input/assets/css/override.css` file, move it to `input/scss/_overrides.scss` (and you can now use Sass inside the CSS overrides file).
+
+- Rename and fix up any override theme files or partials according to the supported ones documented above.
+  - For example, the old Wyam CleanBlog supported a `_PostFooter.cshtml` which should be renamed to `_post-footer.cshtml`.
+  - The CSS may not match exactly since the new CleanBlog theme is based on the most recent CleanBlog project so you may need to take a look at the default partial implementations in this theme and adjust your override files accordingly.
+
+- You can likely remove any build scripting and bootstrapping code since you can now run `dotnet run -- preview` to preview the site.
+  - You can also now setup [built-in deployment](https://statiq.dev/web/deployment/).
