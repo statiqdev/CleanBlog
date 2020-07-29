@@ -2,6 +2,11 @@ header {
     &.masthead {
         background-color: darken($primary, 25%);
         background: linear-gradient(180deg, lighten($primary, 25%) 0%, darken($primary, 25%) 100%);
+        background-repeat: no-repeat;
+        background-origin: padding-box;
+        background-size: cover;
+        background-attachment: scroll;
+        background-position: center center;
     }
     &.masthead .subheading {
         line-height: 1.6 !important;

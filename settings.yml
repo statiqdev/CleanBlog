@@ -8,3 +8,4 @@ PageTitle: |
   }
 PostSources: posts/*
 IsPost: => Outputs.FilterSources(Context.GetString("PostSources")).ContainsById(Document)
+Layout: /_layout.cshtml
