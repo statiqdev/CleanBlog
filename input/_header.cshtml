@@ -5,15 +5,17 @@
         backgroundImage = $"background-image: url(\"{Context.GetLink(Document.GetString(WebKeys.Image))}\")";
     }
     string description = Document.WithoutSettings().GetString("Lead") ?? Document.WithoutSettings().GetString(WebKeys.Description);
+    bool isPost = Document.GetBool("IsPost");
+    string headerTitle = isPost ? Document.GetString("Title") : Document.GetString("SiteTitle");
 }
 <header class="masthead" style="@backgroundImage">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="@(Document.GetBool("IsPost") ? "post-heading" : "site-heading")">
+        <div class="@(@isPost ? "post-heading" : "site-heading")">
           <h1>
-            @Document.GetString("Title")
+            @headerTitle
             @if (Document.GetInt(Keys.Index) > 1)
             {
               <small>(Page @Document.GetString(Keys.Index))</small>
@@ -23,7 +25,7 @@
           {
             <h2 class="subheading">@description</h2>
           }
-          @if (Document.GetBool("IsPost"))
+          @if (@isPost)
           {
               // This is a blog post so show extra data
               <div class="meta">Published on @Document.GetDateTime(WebKeys.Published).ToLongDateString()</div>
