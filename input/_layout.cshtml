@@ -27,8 +27,8 @@
     }
   }
   
-  <meta name="application-name" content="@Context.GetString(WebKeys.Title)" />
-  <meta name="msapplication-tooltip" content="@Context.GetString(WebKeys.Title)" />
+  <meta name="application-name" content="@Document.GetString("SiteTitle")" />
+  <meta name="msapplication-tooltip" content="@Document.GetString("SiteTitle")" />
   <meta name="msapplication-starturl" content="@Context.GetLink("/")" />
 
   @* TODO: More social graph meta tags *@
@@ -91,14 +91,14 @@
 
   <!-- Footer -->  
   @RenderSectionOrPartial("Footer", "_footer")
-  
-  @Html.Partial("_scripts")
-
-  @RenderSection("Scripts", false)
 
   <!-- Bootstrap core JavaScript -->
   <script src="@Context.GetLink("/vendor/jquery/jquery.min.js")"></script>
   <script src="@Context.GetLink("/vendor/bootstrap/js/bootstrap.bundle.min.js")"></script>
+
+  @Html.Partial("_scripts")
+
+  @RenderSection("Scripts", false)
 
   <!-- Custom scripts for this template -->
   <script src="@Context.GetLink("/js/clean-blog.js")"></script>
