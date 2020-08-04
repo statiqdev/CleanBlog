@@ -35,11 +35,15 @@ hr.background--light { border-color: #000 !important; }
 .right-border {
     border-right: 1px solid #eeeeee;
 }
+p {
+    margin: 0 0 1rem 0;
+}
 .sidebar li {
     margin-bottom: 8px;
 }
 .post-title {
     margin-bottom: 0;
+    word-break: break-word;
 }
 .post-subtitle {
     font-family: $font-family-sans-serif;
@@ -76,6 +80,9 @@ hr.background--light { border-color: #000 !important; }
 .post-list > .post-meta > a:focus {
     color: #337ab7;
     text-decoration: underline;
+}
+.post-heading {
+    word-break: break-word;
 }
 .post-heading .subheading {
     margin-bottom: 0;
