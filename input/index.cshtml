@@ -9,10 +9,10 @@ ArchiveTitle: => GetString("Title")
 ---
 <div class="container-sm-height">
     <div class="row row-sm-height">
-        <div class="col-6 right-border col-sm-height">
+        <div class="col-md-6 right-border col-sm-height">
             @Html.Partial("/_posts.cshtml", Document)
         </div>
-        <div class="col-4 col-sm-height">
+        <div class="col-md-4 mt-4 mt-md-0 col-sm-height">
             @{
                 IDocument[] tags = Outputs["tags.html"].FirstOrDefault()?.GetChildren().OrderByDescending(x => x.GetChildren().Count()).Take(10).ToArray() ?? Array.Empty<IDocument>();
                 if (tags.Length > 0)
