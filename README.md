@@ -81,7 +81,7 @@ To add new styles or override existing ones, create an input file at `scss/_over
 
 # Porting From Wyam
 
-This blogging these is roughly compatible with the Wyam CleanBlog theme. Some notes if you're porting:
+This blogging theme is roughly compatible with the Wyam CleanBlog theme. Some notes if you're porting:
 
 - You will need to [create a Statiq Web app](https://statiq.dev/web/) at the root of your site (you can keep the `input` directory).
   - Run `dotnet new console` at the root of your site.
