@@ -1,5 +1,5 @@
 <ul class="navbar-nav ml-auto">
-    @foreach(IDocument doc in Outputs["*.html"].Where(x => x.GetBool("ShowInNavbar", true)).OrderBy(x => x.GetInt(Keys.Order)))
+    @foreach(IDocument doc in OutputPages.GetChildrenOf("index.html").Where(x => x.GetBool("ShowInNavbar", true)).OrderBy(x => x.GetInt(Keys.Order)))
     {
         // Don't add the home page to the nav bar
         if (doc.Destination != "index.html")
