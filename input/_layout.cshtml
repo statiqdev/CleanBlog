@@ -16,6 +16,8 @@
 
   <title>@Document.GetString("PageTitle")</title>
 
+  <link rel="canonical" href="@Document.GetLink(true)">
+
   @{
     @foreach (IDocument rssFeed in Outputs["**/*.rss"])
     {
