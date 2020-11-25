@@ -37,13 +37,13 @@ These can be set in front matter, a sidecar file, etc.
 - `Published`: The date a page or post was published.
 - `Image`: Path to an image for the page or post.
 - `ShowInNavbar`: Set to `false` to hide the page in the top navigation.
+- `IsPost`: Set to `false` to exclude the file from the set of posts. This will also disable post styling like displaying tags in the header.
 
 ## Calculated
 
 The following keys are calculated in `settings.yml` and can be overridden by providing new values in your settings or front matter or used from your own pages.
 
 - `PageTitle`: The title that's set for the current page and shown in the browser (by default this is "[Site Title] - [Document Title]").
-- `IsPost`: Set to `true` if the current document is a blog post, which can be helpful to control conditional styling or layout content.
 
 # Partials
 

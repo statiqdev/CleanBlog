@@ -1,4 +1,5 @@
 FeedSources: => GetString("PostSources")
+FeedFilter: => GetBool("IsPost")
 FeedOrderKey: Published
 FeedOrderDescending: true
 FeedSize: 10
