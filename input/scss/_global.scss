@@ -75,3 +75,34 @@ img::-moz-selection {
   color: $white;
   background: transparent;
 }
+
+// Replace with internal cdn
+@font-face {
+  font-family: "Shurjo";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_400_v2-6a682f6f610beeda14f0.woff2) format('woff2'),
+       url(https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_400_v2-f516035cb806da4a249e.woff) format("woff"),
+       url(https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_400_v2-46e441a492e5db01a626.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Shurjo";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_600_v2-aa601df2de76cd05565b.woff2) format("woff2"),
+       url(https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_600_v2-c8b8a9932c11d2c59584.woff) format('woff'),
+       url(https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_600_v2-84f82f94f85c86547d1b.ttf) format('truetype'), 
+       url(https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_600_v2-a7594ac15c232b284a78.eot) format("embedded-opentype");
+}
+@font-face {
+  font-family: "Shurjo";
+  font-display: swap;
+  font-weight: 700; 
+  font-style: normal;
+  src: url(https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_700_v2-ef9e058ccc3a98d85030.woff2) format("woff2"),
+       url(https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_700_v2-72cba63e779d86520525.woff) format('woff'),
+       url(https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_700_v2-7084d97ccd992205d87b.ttf) format('truetype'), 
+       url(https://assets.prothomalo.com/prothomalo/assets/ShurjoWeb_700_v2-6f30c4f7cce4d463f8e4.eot) format("embedded-opentype");
+}

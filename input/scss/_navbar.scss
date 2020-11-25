@@ -2,7 +2,7 @@
 #mainNav {
   position: absolute;
   border-bottom: 1px solid $gray-200;
-  background-color: white;
+  background-color: #e7e8e9; // white;
   @include sans-serif-font;
   .navbar-brand {
     font-weight: 800;
@@ -18,16 +18,16 @@
   .navbar-nav {
     > li.nav-item {
       > a {
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: 1px;
-        text-transform: uppercase;
+        font-size: 22px;
+        font-weight: 400;
+        // letter-spacing: 1px;
+        // text-transform: uppercase;
       }
     }
   }
   @media only screen and (min-width: 992px) {
     border-bottom: 1px solid transparent;
-    background: transparent;
+    // background: transparent;
     .navbar-brand {
       padding: 10px 20px;
       color: $white;
@@ -39,8 +39,8 @@
     .navbar-nav {
       > li.nav-item {
         > a {
-          padding: 10px 20px;
-          color: $white;
+          padding: 12px;
+          color: black; // $white;
           &:focus,
           &:hover {
             color: fade-out($white, .2);
