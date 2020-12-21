@@ -1,6 +1,11 @@
 // Styling for the footer
 footer {
+  // color: gray;
   padding: 50px 0 65px;
+  background-color: #212121;
+  div > div > ul > li > a {
+    color: gray;
+  }
   .list-inline {
     margin: 0;
     padding: 0;

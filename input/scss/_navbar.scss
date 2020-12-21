@@ -7,6 +7,11 @@
   .navbar-brand {
     font-weight: 800;
     color: $gray-800;
+    > img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
   .navbar-toggler {
     font-size: 12px;
@@ -18,8 +23,8 @@
   .navbar-nav {
     > li.nav-item {
       > a {
-        font-size: 22px;
-        font-weight: 400;
+        font-size: 20px;
+        font-weight: 600;
         // letter-spacing: 1px;
         // text-transform: uppercase;
       }
@@ -29,7 +34,7 @@
     border-bottom: 1px solid transparent;
     // background: transparent;
     .navbar-brand {
-      padding: 10px 20px;
+      padding: 10px 0px;
       color: $white;
       &:focus,
       &:hover {
@@ -39,7 +44,7 @@
     .navbar-nav {
       > li.nav-item {
         > a {
-          padding: 12px;
+          padding: 2px 10px;
           color: black; // $white;
           &:focus,
           &:hover {
