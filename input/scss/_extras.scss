@@ -1,6 +1,8 @@
 header {
     &.masthead {
-        background-color: #bcbec0; // darken($primary, 25%);
+        margin-top: 101px;
+        background-image: url('../assets/bg-cover.jpg');
+        // background-color: #bcbec0; // darken($primary, 25%);
         // background: linear-gradient(180deg, lighten($primary, 25%) 0%, darken($primary, 25%) 100%);
         background-repeat: no-repeat;
         background-origin: padding-box;

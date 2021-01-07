@@ -1,8 +1,16 @@
 // Global styling for this template
+html {
+  height: 100%;
+}
 body {
+  height: 100%;
   font-size: 20px;
   color: $gray-900;
   @include serif-font;
+}
+
+header.masthead + .container {
+  min-height: 100%;
 }
 
 p {
