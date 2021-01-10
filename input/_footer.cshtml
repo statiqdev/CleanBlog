@@ -2,9 +2,9 @@
     <div class="container">
         <div class="row">
                 <div class="col-md-12 text-center">
-                    <p class="copyright text-muted m-0">Copyright © @DateTime.Now.Year</p>
+                    <p class="copyright text-muted m-0">@Document.GetString(WebKeys.Copyright)</p>
                     <br />
-                    <ul class="list-inline text-center small">                                
+                    <ul class="list-inline text-center small">
                         @{
                             IDocument rssFeed = Outputs["**/*.rss"].FirstOrDefault();
                             IDocument atomFeed = Outputs["**/*.atom"].FirstOrDefault();
@@ -14,7 +14,7 @@
                                 <a href="@Context.GetLink(rssFeed)"><i class="fa fa-rss"></i> RSS Feed</a>
                             </li>
                         }
-                        @if (atomFeed != null) {                            
+                        @if (atomFeed != null) {
                             <li class="list-inline-item">
                                 <a href="@Context.GetLink(atomFeed)"><i class="fa fa-rss"></i> Atom Feed</a>
                             </li>
