@@ -15,4 +15,27 @@ footer {
     margin-bottom: 0;
     text-align: center;
   }
+
+  .social-icons a{
+    display: inline-block;
+    margin: 2px 5px;
+    width: 35px;
+    height: 35px;
+    border: solid 1px transparent;
+    border-radius: 50%;
+  }
+  .social-icons a:hover {
+    border-color: #404040;
+    background: #2b2b2b;
+  }
+  .social-icons a img{
+    width: 23px;
+    display: block;
+    margin: 5px auto;
+  }
+  .social-icons a:hover img {
+    opacity: 0.5;
+    transition: 500ms;
+  }
 }
+
