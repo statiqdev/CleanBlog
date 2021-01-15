@@ -16,7 +16,7 @@
 
   <title>@Document.GetString("PageTitle")</title>
 
-  <link rel="canonical" href="@Document.GetLink(true)">
+  <link rel="canonical" href="@(Document.GetString("Canonical") ?? Document.GetLink(true))">
 
   @{
     @foreach (IDocument rssFeed in Outputs["**/*.rss"])
