@@ -16,6 +16,23 @@ git clone https://github.com/statiqdev/CleanBlog.git theme
 
 Once inside the `theme` folder, Statiq will automatically recognize the theme. If you want to tweak the theme you can edit files directly in the `theme` folder or copy them to your `input` folder and edit them there.
 
+Note that the `index.cshtml` page in the theme is an [archive](https://statiq.dev/web/content-and-data/archives) which means that it uses blog posts from the `posts` folder of your own `input` folder to populate generate the output page. If you don't have any blog posts or aren't planning on adding files to the `posts` folder, no output file will be generated. **This means that right out of the box the theme will out produce any output pages until you add a blog post**. You'll need to replace the `index.cshtml` file with your own if you want an index file that doesn't use blog posts.
+
+# Blog Posts
+
+Add your blog posts to a `posts` folder under your own `input` folder. An example post might be named `input/posts/example.md` and contain the following content:
+
+```
+Title: This Is An Example Post
+Lead: Yay for examples!
+Published: 12/13/2014
+Tags:
+  - Examples
+  - Code
+---
+This is my example blog post content.
+```
+
 # Settings
 
 ## Global
