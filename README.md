@@ -1,5 +1,11 @@
 This is a clean blogging theme adapted from https://github.com/StartBootstrap/startbootstrap-clean-blog.
 
+# Minimum Statiq Web Version
+
+This theme requires Statiq Web 1.0.0-beta.33 or later.
+
+Using an earlier commit of the theme may allow the use of an earlier version of Statiq Web (look at the theme `settings.yml` file to determine the minimum Statiq Web version for a given version of the theme).
+
 # Installation
 
 Statiq themes go in a `theme` folder alongside your `input` folder. If your site is inside a git repository, you can add the theme as a git submodule:
@@ -37,7 +43,7 @@ This is my example blog post content.
 
 ## Global
 
-These can be set in a settings file.
+These can be set in a settings file (in addition to any [Statiq Web settings](https://statiq.dev/web/configuration/settings)).
 
 - `SiteTitle`: The title of the site.
 - `Description`: A description of the site.
@@ -45,7 +51,7 @@ These can be set in a settings file.
 
 ## Page
 
-These can be set in front matter, a sidecar file, etc.
+These can be set in front matter, a sidecar file, etc. (in addition to any [Statiq Web settings](https://statiq.dev/web/configuration/settings)).
 
 - `Title`: The title of the page (or post).
 - `Description`: A description of the page.
@@ -95,6 +101,10 @@ include any blog posts since the default index page is an archive of posts.
 # Styles
 
 To add new styles or override existing ones, create an input file at `scss/_overrides.scss` and add Sass styles there.
+
+# Searching
+
+If you set `GenerateSearchIndex` to `true`, Statiq Web will automatically generate a search index for your site and the theme will include a search box in the navigation bar and generate a dedicated search page for your site. You can add your own search index page by creating a `search.cshtml` file in your `input` folder.
 
 # Porting From Wyam
 
