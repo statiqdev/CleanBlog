@@ -57,16 +57,16 @@
   <!-- Custom styles for this template -->
   <link href="@Context.GetLink("/scss/clean-blog.css")" rel="stylesheet">
   
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/components/prism-core.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror></script>
-  <script src="https://cdn.jsdelivr.net/npm/quicklink@2.0.0/dist/quicklink.umd.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/themes/prism.css">
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/components/prism-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/plugins/autoloader/prism-autoloader.min.js" data-no-mirror></script>
+  <script src="https://cdn.jsdelivr.net/npm/quicklink@2.1.0/dist/quicklink.umd.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/themes/prism.css">
 
   <!-- Lunr search -->
   @if (Context.GetBool(WebKeys.GenerateSearchIndex))
   {
     <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pako@2.0.3/dist/pako_inflate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pako@2.0.4/dist/pako_inflate.min.js"></script>
     <script src="@(Context.GetLink(Context.GetPath(WebKeys.SearchScriptPath, "search.js")))"></script>
   }
   
