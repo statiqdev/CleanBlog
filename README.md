@@ -54,6 +54,7 @@ These can be set in a settings file (in addition to any [Statiq Web settings](ht
 These can be set in front matter, a sidecar file, etc. (in addition to any [Statiq Web settings](https://statiq.dev/web/configuration/settings)).
 
 - `Title`: The title of the page (or post).
+- `NavbarTitle`: The title of the page to use in the top-level navbar (optional, `Title` will be used if not specified).
 - `Description`: A description of the page.
 - `Lead`: Descriptive text that expands on the title, usually used for posts.
 - `Tags`: Tags for a blog post.

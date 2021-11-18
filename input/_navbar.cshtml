@@ -5,7 +5,10 @@
         if (doc.Destination != "index.html")
         {
             <li class="nav-item">
-                @Html.DocumentLink(doc, new Dictionary<object, object> { { "class", "nav-link" } })
+                @Html.DocumentLink(
+                    doc,
+                    doc.GetString("NavbarTitle", doc.GetTitle()),
+                    new Dictionary<object, object> { { "class", "nav-link" } })
             </li>
         }
     }
