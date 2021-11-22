@@ -1,7 +1,7 @@
 @model IDocument
 
 @{
-    string excerpt = Model.GetString(Statiq.Html.HtmlKeys.Excerpt);
+    string excerpt = Model.GetString(Keys.Excerpt);
 }
 
 <div class="post-preview">
@@ -10,7 +10,7 @@
     {
         <div class="post-subtitle">@Model.GetString("Lead")</div>
     }
-    <p class="post-meta">Published on @Model.GetDateTime(WebKeys.Published).ToLongDateString()</p>                
+    <p class="post-meta">Published on @Model.GetDateTime(WebKeys.Published).ToLongDateString()</p>
     @if (!string.IsNullOrEmpty(excerpt))
     {
         @Html.Raw(excerpt)
