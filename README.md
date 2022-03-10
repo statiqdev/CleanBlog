@@ -2,7 +2,7 @@ This is a clean blogging theme adapted from https://github.com/StartBootstrap/st
 
 # Minimum Statiq Web Version
 
-This theme requires Statiq Web 1.0.0-beta.33 or later.
+This theme requires Statiq Web 1.0.0-beta.36 or later.
 
 Using an earlier commit of the theme may allow the use of an earlier version of Statiq Web (look at the theme `settings.yml` file to determine the minimum Statiq Web version for a given version of the theme).
 
@@ -37,6 +37,16 @@ Tags:
   - Code
 ---
 This is my example blog post content.
+```
+
+## Post Destination Path
+
+By default, posts are output using the same folder structure they were found in your `posts` folder. If you want to modify that, you can use [directory metadata](https://www.statiq.dev/guide/web/directory-metadata) to specify a different destination. If you combine that with [computed values](https://www.statiq.dev/guide/documents-and-metadata/metadata-values#computed-values), you can programatically set the destination of your posts.
+
+For example, the following in a `_directory.yml` file in the `posts` folder will result in outputting posts with a path of "yyyy/mm/post-title.html":
+
+```
+DestinationPath: => $"{Document.GetDateTime("Published").ToString("yyyy/MM")}/{Document.Destination.FileName}"
 ```
 
 # Settings
