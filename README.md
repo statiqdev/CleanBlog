@@ -117,31 +117,6 @@ To add new styles or override existing ones, create an input file at `scss/_over
 
 If you set `GenerateSearchIndex` to `true`, Statiq Web will automatically generate a search index for your site and the theme will include a search box in the navigation bar and generate a dedicated search page for your site. You can add your own search index page by creating a `search.cshtml` file in your `input` folder.
 
-# IIS/Azure
-
-You'll probably need to use a `web.config` file with redirect rules when deploying a static site on IIS or Azure App Service in order to support extensionless URLs and other static site conventions. [The Statiq Web documentation suggests one such set of rewrite rules](), but since CleanBlog currently outputs both a `/posts.html` and a `/posts` folder (likewise for `/tags.html` and `/tags`), it confuses the rewrite rules presented there. Here's an alternative set of rewrite rules that supports extensionless files and folders with the same name:
-
-```
-<configuration>
-  <system.webServer>
-    <rewrite>
-      <rules>
-        <rule name="html">
-          <match url="(.+)/?" />
-          <conditions logicalGrouping="MatchAny">
-            <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
-            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" />
-          </conditions> 
-          <action type="Rewrite" url="{R:1}.html" />
-        </rule>
-      </rules>
-    </rewrite>
-  </system.webServer>
-</configuration>
-```
-
-You can read more about this issue at https://github.com/statiqdev/statiqdev.github.io/issues/32.
-
 # Porting From Wyam
 
 This blogging theme is roughly compatible with the Wyam CleanBlog theme. Some notes if you're porting:
