@@ -29,6 +29,7 @@ Note that the `index.cshtml` page in the theme is an [archive](https://statiq.de
 Add your blog posts to a `posts` folder under your own `input` folder. An example post might be named `input/posts/example.md` and contain the following content:
 
 ```
+IsPost: true
 Title: This Is An Example Post
 Lead: Yay for examples!
 Published: 12/13/2014
