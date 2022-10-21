@@ -28,7 +28,7 @@
           @if (isPost)
           {
               // This is a blog post so show extra data
-              <div class="meta">Published on @Document.GetDateTime(WebKeys.Published).ToLongDateString()</div>
+              <div class="meta">Published on @Document.GetDateTime(WebKeys.Published).ToLongDateString(Context)</div>
               @if (Document.ContainsKey("Tags"))
               {
                 <div class="mt-3">
