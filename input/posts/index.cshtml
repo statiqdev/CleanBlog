@@ -20,7 +20,7 @@ ArchiveTitle: => GetString("Title")
             {
                 <div class="post-subtitle">@post.GetString("Lead")</div>
             }
-            <p class="post-meta">Published on @post.GetDateTime(WebKeys.Published).ToLongDateString()</p>
+            <p class="post-meta">Published on @post.GetDateTime(WebKeys.Published).ToLongDateString(Context)</p>
         </div>
     }
 }
