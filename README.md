@@ -79,10 +79,24 @@ These can be set in a settings file (in addition to any [Statiq Web settings](ht
 
 - `CommentEngine`: The comment engine to use for posts (empty string or "none" to _not_ display comments).
 
+Currently, the only available comment engine is [`giscus`](https://giscus/app).
+
 You can interface to a comment engine of your choice without modifying this theme:
 
 - create a Razor partial named `_post-comments-name_of_your_engine.cshtml` file in your `input` folder, containing the necessary HTML code;
 - set `CommentEngine` to `name_of_your_engine` to have your partial automatically included.
+
+### Giscus
+
+These must be set when `CommentEngine` is set to `giscus`:
+
+- `GiscusRepoName`: Name of the repository whose discussions act as storage for post comments.
+- `GiscusRepoId`: ID of the repository whose discussions act as storage for post comments.
+- `GiscusCategoryId`: ID of the discussion category where new discussions will be created. It is recommended to use a category with the Announcements type so that new discussions can only be created by maintainers and giscus.
+
+To configure Giscus correctly in your blog, go to https://giscus.app and follow the configuration instructions, then copy and paste configuration values from the preconfigured `<script>` tag to your settings file.
+
+Alternatively, or if you need to tweak some advanced Giscus setting, create a file named `_post-comments-giscus.cshtml` in your `input` folder and just copy the preconfigured script into it.
 
 ## Calculated
 
