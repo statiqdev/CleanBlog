@@ -33,8 +33,10 @@ a {
 }
 
 blockquote {
-  font-style: italic;
-  color: $gray-600;
+  background-color: $gray-200;
+  padding: 1rem 1rem 1rem 1.25rem;
+  margin-left: 2rem;
+  border-left: 0.25rem dashed $gray-800;
 }
 
 .section-heading {
