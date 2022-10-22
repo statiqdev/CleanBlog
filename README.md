@@ -90,6 +90,7 @@ Replace or copy any of these Razor partials in your `input` folder to override s
 - `/_posts.cshtml`: Displays a set of posts stored in the children of a document passed as the partial model data.
 - `/_post.cshtml`: Displays an individual post inside a list of posts.
 - `/_post-footer.cshtml`: Displays content at the bottom of a post (for example, a comments section).
+- `/_content-footer.cshtml`: Displays content at the bottom of a page, regardless of its `IsPost` setting. Included just after `/_post-footer.cshtml` in posts.
 - `/_sidebar.cshtml`: Additional content for the sidebar on the main index page (ignored if you provide your own index page).
 - `/_footer.cshtml`: The footer at the bottom of all pages.
 - `/_scripts.cshtml`: Additional scripts or other content at the bottom of the page.
