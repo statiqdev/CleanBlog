@@ -96,6 +96,10 @@
         @Html.Partial("_content-footer")
       </div>
     </div>
+    @if (Document.GetBool("IsPost"))
+    {
+      @Html.Partial("_post-comments")
+    }
   </div>
 
   <hr>
