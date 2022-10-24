@@ -14,62 +14,62 @@ ShowInNavbar: false
 
 @section Scripts
 {
-    <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pako@2.0.4/dist/pako_inflate.min.js"></script>
-    <script src='@(Context.GetLink(Context.GetPath(WebKeys.SearchScriptPath, "search.js")))'></script>
-    <script>
-        (function(search) {
-            function runSearch() {
-                var query = document.getElementById("search-query").value;
-                document.getElementById("search-results").replaceChildren();
-                if (query.length < 2)
-                {
-                    return;
-                }
+  <script src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pako@2.0.4/dist/pako_inflate.min.js"></script>
+  <script src='@(Context.GetLink(Context.GetPath(WebKeys.SearchScriptPath, "search.js")))'></script>
+  <script>
+    (function(search) {
+      function runSearch() {
+        var query = document.getElementById("search-query").value;
+        document.getElementById("search-results").replaceChildren();
+        if (query.length < 2)
+        {
+          return;
+        }
 
-                search.search(query, function(results) {
-                    var list = document.createElement("ul");
-                    if (results.length == 0)
-                    {
-                        const li = document.createElement("li");
-                        li.append("No results found");
-                        list.appendChild(li);
-                    }
-                    else
-                    {
-                        for (const res of results)
-                        {
-                            const li = document.createElement("li");
-                            const a = document.createElement("a");
-                            a.setAttribute("href", res.link);
-                            a.append(res.title);
-                            li.appendChild(a);
-                            list.appendChild(li);
-                        }
-                    }
-                    document.getElementById("search-results").appendChild(list);
-                });
+        search.search(query, function(results) {
+          var list = document.createElement("ul");
+          if (results.length == 0)
+          {
+            const li = document.createElement("li");
+            li.append("No results found");
+            list.appendChild(li);
+          }
+          else
+          {
+            for (const res of results)
+            {
+              const li = document.createElement("li");
+              const a = document.createElement("a");
+              a.setAttribute("href", res.link);
+              a.append(res.title);
+              li.appendChild(a);
+              list.appendChild(li);
             }
+          }
+          document.getElementById("search-results").appendChild(list);
+        });
+      }
 
-            function initializeSearch() {
-                var searchField = document.getElementById("search-query");
-                searchField.addEventListener("input", runSearch);
-                searchField.addEventListener("propertychange", runSearch);
-                searchField.addEventListener("paste", runSearch);
+      function initializeSearch() {
+        var searchField = document.getElementById("search-query");
+        searchField.addEventListener("input", runSearch);
+        searchField.addEventListener("propertychange", runSearch);
+        searchField.addEventListener("paste", runSearch);
 
-                const urlParams = new URLSearchParams(window.location.search);
-                const queryParam = urlParams.get("query");
-                if (queryParam) {
-                    searchField.value = queryParam;
-                    runSearch();
-                }
-            }
+        const urlParams = new URLSearchParams(window.location.search);
+        const queryParam = urlParams.get("query");
+        if (queryParam) {
+          searchField.value = queryParam;
+          runSearch();
+        }
+      }
 
-            if (document.readyState === 'loading') {
-                document.addEventListener("DOMContentLoaded", initializeSearch);
-            } else {
-                initializeSearch();
-            }
-        })(search); // The search object is defined in search.js
-    </script>
+      if (document.readyState === 'loading') {
+        document.addEventListener("DOMContentLoaded", initializeSearch);
+      } else {
+        initializeSearch();
+      }
+    })(search); // The search object is defined in search.js
+  </script>
 }

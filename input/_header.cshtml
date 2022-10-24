@@ -1,19 +1,19 @@
 @{
-    string mastheadStyle = null;
-    string mastheadClass = null;
-    var image = Document.GetString(WebKeys.Image, string.Empty);
-    if (string.IsNullOrEmpty(image))
-    {
-        mastheadClass="masthead no-image";
-    }
-    else
-    {
-        mastheadClass="masthead";
-        mastheadStyle = $"background-image: url(\"{Context.GetLink(image)}\")";
-    }
-    string description = Document.WithoutSettings().GetString("Lead") ?? Document.WithoutSettings().GetString(WebKeys.Description);
-    string title = Document.GetString("Title") ?? Document.GetString("SiteTitle");
-    bool isPost = Document.GetBool("IsPost") && !Document.GetBool("IsArchive");
+  string mastheadStyle = null;
+  string mastheadClass = null;
+  var image = Document.GetString(WebKeys.Image, string.Empty);
+  if (string.IsNullOrEmpty(image))
+  {
+    mastheadClass="masthead no-image";
+  }
+  else
+  {
+    mastheadClass="masthead";
+    mastheadStyle = $"background-image: url(\"{Context.GetLink(image)}\")";
+  }
+  string description = Document.WithoutSettings().GetString("Lead") ?? Document.WithoutSettings().GetString(WebKeys.Description);
+  string title = Document.GetString("Title") ?? Document.GetString("SiteTitle");
+  bool isPost = Document.GetBool("IsPost") && !Document.GetBool("IsArchive");
 }
 <header class="@mastheadClass" style="@mastheadStyle">
   <div class="container position-relative">
@@ -33,19 +33,19 @@
           }
           @if (isPost)
           {
-              // This is a blog post so show extra data
-              <div class="meta">Published on @Document.GetDateTime(WebKeys.Published).ToLongDateString(Context)</div>
-              @if (Document.ContainsKey("Tags"))
-              {
-                <div class="mt-3">
-                  @foreach (IDocument tag in Document.GetList<string>("Tags")
-                    .Select(x => Outputs["tags/index.html"].First().GetChildren().FirstOrDefault(y => y.GetTitle().Equals(x, StringComparison.OrdinalIgnoreCase)))
-                    .Where(x => x != null))
-                  {
-                      <a href="@Context.GetLink(tag)" class="badge text-bg-light"> @tag.GetTitle()</a>
-                  }
-                </div>
-              }
+            // This is a blog post so show extra data
+            <div class="meta">Published on @Document.GetDateTime(WebKeys.Published).ToLongDateString(Context)</div>
+            @if (Document.ContainsKey("Tags"))
+            {
+              <div class="mt-3">
+                @foreach (IDocument tag in Document.GetList<string>("Tags")
+                  .Select(x => Outputs["tags/index.html"].First().GetChildren().FirstOrDefault(y => y.GetTitle().Equals(x, StringComparison.OrdinalIgnoreCase)))
+                  .Where(x => x != null))
+                {
+                  <a href="@Context.GetLink(tag)" class="badge text-bg-light"> @tag.GetTitle()</a>
+                }
+              </div>
+            }
           }
         </div>
       </div>
