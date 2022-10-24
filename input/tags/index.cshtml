@@ -29,7 +29,7 @@ ArchiveTitle: => GetString("GroupKey")
     </div>
 }
 else
-{ 
+{
     @foreach (IDocument tag in Document.GetChildren().OrderByDescending(x => x.GetChildren().Count()))
     {
         string postCount = tag.GetChildren().Count().ToString();
