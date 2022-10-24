@@ -1,82 +1,39 @@
-// Styling for the masthead
 header.masthead {
-  // TIP: Background images are set within the HTML using inline CSS!
-  margin-bottom: 50px;
-  background: no-repeat center center;
-  background-color: $gray-600;
-  background-attachment: scroll;
-  position: relative;
-  @include background-cover;
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: $gray-900;
-    opacity: 0.5;
-  }
-  .page-heading,
-  .post-heading,
-  .site-heading {
-    padding: 200px 0 150px;
-    color: white;
-    @media only screen and (min-width: 768px) {
-      padding: 200px 0;
+  &.no-image {
+    background-origin: padding-box;
+    background-image: linear-gradient(180deg, scale-color($masthead-main-color, $lightness: +25%) 0%, scale-color($masthead-main-color, $lightness: -25%) 100%);
+
+  &::before {
+      display: none;
     }
   }
-  .page-heading,
-  .site-heading {
-    text-align: center;
-    h1 {
-      font-size: 50px;
-      margin-top: 0;
-    }
-    .subheading {
-      font-size: 24px;
-      font-weight: 300;
-      line-height: 1.1;
-      display: block;
-      margin: 10px 0 0;
-      @include sans-serif-font;
-    }
-    @media only screen and (min-width: 768px) {
-      h1 {
-        font-size: 80px;
-      }
-    }
+
+  .page-heading .subheading,
+  .site-heading .subheading {
+    line-height: 1.6;
   }
+
+  *, .post-heading * {
+    text-shadow: 0 0 80px rgba(0,0,0,0.8);
+  }
+
   .post-heading {
-    h1 {
-      font-size: 35px;
-    }
-    .meta,
+    word-break: break-word;
+
     .subheading {
-      line-height: 1.1;
-      display: block;
+      margin-bottom: 0;
     }
-    .subheading {
-      font-size: 24px;
-      font-weight: 600;
-      margin: 10px 0 30px;
-      @include sans-serif-font;
-    }
+
     .meta {
-      font-size: 20px;
-      font-weight: 300;
-      font-style: italic;
-      @include serif-font;
-      a {
-        color: $white;
-      }
+      margin-top: 1.875rem;
     }
-    @media only screen and (min-width: 768px) {
-      h1 {
-        font-size: 55px;
-      }
-      .subheading {
-        font-size: 30px;
+
+    .tags {
+      margin-top: 1.875rem;
+
+      .btn {
+        border-color: $gray-900;
       }
     }
   }
-}
+  }
