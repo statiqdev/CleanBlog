@@ -73,6 +73,31 @@ These can be set in front matter, a sidecar file, etc. (in addition to any [Stat
 - `ShowInNavbar`: Set to `false` to hide the page in the top navigation.
 - `IsPost`: Set to `false` to exclude the file from the set of posts. This will also disable post styling like displaying tags in the header.
 
+## Post comments
+
+These can be set in a settings file (in addition to any [Statiq Web settings](https://statiq.dev/web/configuration/settings)).
+
+- `CommentEngine`: The comment engine to use for posts (empty string or "none" to _not_ display comments).
+
+Currently, the only available comment engine is [`giscus`](https://giscus/app).
+
+You can interface to a comment engine of your choice without modifying this theme:
+
+- create a Razor partial named `_post-comments-name_of_your_engine.cshtml` file in your `input` folder, containing the necessary HTML code;
+- set `CommentEngine` to `name_of_your_engine` to have your partial automatically included.
+
+### Giscus
+
+These must be set when `CommentEngine` is set to `giscus`:
+
+- `GiscusRepoName`: Name of the repository whose discussions act as storage for post comments.
+- `GiscusRepoId`: ID of the repository whose discussions act as storage for post comments.
+- `GiscusCategoryId`: ID of the discussion category where new discussions will be created. It is recommended to use a category with the Announcements type so that new discussions can only be created by maintainers and giscus.
+
+To configure Giscus correctly in your blog, go to https://giscus.app and follow the configuration instructions, then copy and paste configuration values from the preconfigured `<script>` tag to your settings file.
+
+Alternatively, or if you need to tweak some advanced Giscus setting, create a file named `_post-comments-giscus.cshtml` in your `input` folder and just copy the preconfigured script into it.
+
 ## Calculated
 
 The following keys are calculated in `settings.yml` and can be overridden by providing new values in your settings or front matter or used from your own pages.
@@ -89,7 +114,10 @@ Replace or copy any of these Razor partials in your `input` folder to override s
 - `/_header.cshtml`: The header section of the page.
 - `/_posts.cshtml`: Displays a set of posts stored in the children of a document passed as the partial model data.
 - `/_post.cshtml`: Displays an individual post inside a list of posts.
-- `/_post-footer.cshtml`: Displays content at the bottom of a post (for example, a comments section).
+- `/_post-footer.cshtml`: Displays content at the bottom of a post, before comments.
+- `/_content-footer.cshtml`: Displays content at the bottom of a page, regardless of its `IsPost` setting. Included just after `/_post-footer.cshtml` in posts.
+- `/_post-comments.cshtml`: Displays comments for a post.
+- `/_post-comments-{engine}.cshtml`: Displays the contents of the "comments" section of a post when the `CommentEngine` setting is equal, case-insensitively, to `{engine}`.
 - `/_sidebar.cshtml`: Additional content for the sidebar on the main index page (ignored if you provide your own index page).
 - `/_footer.cshtml`: The footer at the bottom of all pages.
 - `/_scripts.cshtml`: Additional scripts or other content at the bottom of the page.

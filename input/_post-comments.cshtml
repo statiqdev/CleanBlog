@@ -1,0 +1,9 @@
+@{
+  var commentEngine = Document.GetString("CommentEngine", string.Empty).ToLowerInvariant();
+}
+@if (!string.IsNullOrEmpty(commentEngine) && commentEngine != "none")
+{
+  <div id="comments-container" class="row">
+    @Html.Partial("_post-comments-" + commentEngine)
+  </div>
+}
