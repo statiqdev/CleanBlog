@@ -23,7 +23,7 @@ ArchiveTitle: => GetString("Title")
                         @foreach (IDocument tag in Outputs.Get("tags/index.html").GetChildren().OrderByDescending(x => x.GetChildren().Count()).Take(10))
                         {
                             string postCount = tag.GetChildren().Count().ToString();
-                            <a href="@Context.GetLink(tag)" class="badge badge-light"> @tag.GetTitle() (@postCount)</a>
+                            <a href="@Context.GetLink(tag)" class="badge text-bg-light"> @tag.GetTitle() (@postCount)</a>
                         }
                         <div class="mt-3">
                             <div class="float-sm-right">
