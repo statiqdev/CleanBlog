@@ -20,7 +20,7 @@ ArchiveTitle: => GetString("GroupKey")
             <div class="col-md-4 mt-4 mt-md-0 col-sm-height">
                 @foreach (IDocument tag in OutputPages.Get("tags/index.html").GetChildren().OrderByDescending(x => x.GetChildren().Count()))
                 {
-                    string badgeStyle = Document.GetString(Keys.GroupKey).Equals(tag.GetTitle(), StringComparison.OrdinalIgnoreCase) ? "badge-dark" : "badge-light";
+                    string badgeStyle = Document.GetString(Keys.GroupKey).Equals(tag.GetTitle(), StringComparison.OrdinalIgnoreCase) ? "text-bg-dark" : "text-bg-light";
                     string postCount = tag.GetChildren().Count().ToString();
                     <a href="@Context.GetLink(tag)" class="badge @badgeStyle"> @tag.GetTitle() (@postCount)</a>
                 }
@@ -33,6 +33,6 @@ else
     @foreach (IDocument tag in Document.GetChildren().OrderByDescending(x => x.GetChildren().Count()))
     {
         string postCount = tag.GetChildren().Count().ToString();
-        <a role="button" href="@Context.GetLink(tag)" class="badge badge-light"> @tag.GetTitle() (@postCount)</a>
+        <a role="button" href="@Context.GetLink(tag)" class="badge text-bg-light"> @tag.GetTitle() (@postCount)</a>
     }
 }
