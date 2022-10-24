@@ -1,16 +1,22 @@
 @{
-    string backgroundImage = null;
-    if (Document.ContainsKey(WebKeys.Image))
+    string mastheadStyle = null;
+    string mastheadClass = null;
+    var image = Document.GetString(WebKeys.Image, string.Empty);
+    if (string.IsNullOrEmpty(image))
     {
-        backgroundImage = $"background-image: url(\"{Context.GetLink(Document.GetString(WebKeys.Image))}\")";
+        mastheadClass="masthead no-image";
+    }
+    else
+    {
+        mastheadClass="masthead";
+        mastheadStyle = $"background-image: url(\"{Context.GetLink(image)}\")";
     }
     string description = Document.WithoutSettings().GetString("Lead") ?? Document.WithoutSettings().GetString(WebKeys.Description);
     string title = Document.GetString("Title") ?? Document.GetString("SiteTitle");
     bool isPost = Document.GetBool("IsPost") && !Document.GetBool("IsArchive");
 }
-<header class="masthead" style="@backgroundImage">
-  <div class="overlay"></div>
-  <div class="container">
+<header class="@mastheadClass" style="@mastheadStyle">
+  <div class="container position-relative">
     <div class="row">
       <div class="col-md-12">
         <div class='@(isPost ? "post-heading" : "site-heading")'>
@@ -23,7 +29,7 @@
           </h1>
           @if (!string.IsNullOrEmpty(description))
           {
-            <h2 class="subheading">@description</h2>
+            <span class="subheading">@description</span>
           }
           @if (isPost)
           {

@@ -85,7 +85,7 @@ Replace or copy any of these Razor partials in your `input` folder to override s
 
 - `/_head.cshtml`: Additional content for the `<head>` tag.
 - `/_navigation.cshtml`: The navigation at the top of the layout.
-- `/_navbar.cshtml`: The navigation bar at the top of the page.
+- `/_navbar.cshtml`: The items of the navigation bar at the top of the page.
 - `/_header.cshtml`: The header section of the page.
 - `/_posts.cshtml`: Displays a set of posts stored in the children of a document passed as the partial model data.
 - `/_post.cshtml`: Displays an individual post inside a list of posts.
@@ -102,7 +102,7 @@ In addition to globally changing sections of the site using the partials above y
 - `Navigation`: The navigation at the top of the layout.
 - `Header`: The header section of the page.
 - `Footer`: The footer section of the page.
-- `Scripts`: Additional scripts or other content at the bottom of the page.
+- `Scripts`: Additional scripts or other content at the bottom of the page (this section is additive with the content in the `_scripts.cshtml` partial).
 
 # Index Page
 
@@ -111,7 +111,17 @@ include any blog posts since the default index page is an archive of posts.
 
 # Styles
 
-To add new styles or override existing ones, create an input file at `scss/_overrides.scss` and add Sass styles there.
+There are three distinct extensibility points for styles:
+
+- to override Bootstrap variables, for instance [customize Bootstrap options](https://getbootstrap.com/docs/5.2/customize/options/), create an input file at `scss/_bootstrap-variable-overrides.scss` and add your variables there;
+- to override theme variables, for example to change the main color for the masthead gradient, create an input file at `scss/_variable-overrides.scss` and add your variables there;
+- to override any styles, create an input file at `scss/_overrides.scss` and add your styles there.
+
+You will find the definitions of overridable Sass variables in the following files:
+
+- `input/vendor/bootstrap/scss/_variables.scss` (Bootstrap variables and options);
+- the whole `input/vendor/startbootstrap-clean-blog/scss/variables` directory (to customize the Clean Blog theme);
+- `input/scss/_variables.scss` (to customize this variation of CleanBlog - masthead gradient color is here).
 
 # Searching
 
