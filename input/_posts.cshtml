@@ -2,28 +2,28 @@
 
 @foreach (IDocument post in Model.GetChildren())
 {
-    @Html.Partial("/_post.cshtml", post)
+  @Html.Partial("/_post.cshtml", post)
 }
 
 @{
-    IDocument newer = Model.GetDocument(Keys.Previous);
-    IDocument older = Model.GetDocument(Keys.Next);
+  IDocument newer = Model.GetDocument(Keys.Previous);
+  IDocument older = Model.GetDocument(Keys.Next);
 }
 @if (older != null || newer != null)
 {
-    <div>
-        <div class="float-sm-start">
-            @if (newer != null)
-            {
-                <a class="btn btn-primary" href="@Context.GetLink(newer)" role="button"><i class="fas fa-angle-double-left"></i> Newer</a>
-            }
-        </div>
-        <div class="float-sm-end">
-            @if (older != null)
-            {
-                <a class="btn btn-primary" href="@Context.GetLink(older)" role="button">Older <i class="fas fa-angle-double-right"></i></a>
-            }
-        </div>
-        <div class="clearfix"></div>
+  <div>
+    <div class="float-sm-start">
+      @if (newer != null)
+      {
+        <a class="btn btn-primary" href="@Context.GetLink(newer)" role="button"><i class="fas fa-angle-double-left"></i> Newer</a>
+      }
     </div>
+    <div class="float-sm-end">
+      @if (older != null)
+      {
+        <a class="btn btn-primary" href="@Context.GetLink(older)" role="button">Older <i class="fas fa-angle-double-right"></i></a>
+      }
+    </div>
+    <div class="clearfix"></div>
+  </div>
 }

@@ -8,43 +8,43 @@ ArchiveDestination: >
 ArchiveTitle: => GetString("Title")
 ---
 @foreach(IGrouping<int, IDocument> group in Document
-    .GetChildren()
-    .GroupBy(x => x.GetDateTime(WebKeys.Published).Year)
-    .OrderByDescending(x => x.Key))
+                                            .GetChildren()
+                                            .GroupBy(x => x.GetDateTime(WebKeys.Published).Year)
+                                            .OrderByDescending(x => x.Key))
 {
-    <h1 class="bg-dark text-light p-2">@group.Key</h1>
-    foreach (IDocument post in group)
-    {
-        <div class="post-preview">
-            <h3 class="post-title">@Html.DocumentLink(post)</h3>
-            @if(post.ContainsKey("Lead"))
-            {
-                <div class="post-subtitle">@post.GetString("Lead")</div>
-            }
-            <p class="post-meta">Published on @post.GetDateTime(WebKeys.Published).ToLongDateString(Context)</p>
-        </div>
-    }
+  <h1 class="bg-dark text-light p-2">@group.Key</h1>
+  foreach (IDocument post in group)
+  {
+    <div class="post-preview">
+      <h3 class="post-title">@Html.DocumentLink(post)</h3>
+      @if(post.ContainsKey("Lead"))
+      {
+        <div class="post-subtitle">@post.GetString("Lead")</div>
+      }
+      <p class="post-meta">Published on @post.GetDateTime(WebKeys.Published).ToLongDateString(Context)</p>
+    </div>
+  }
 }
 
 @{
-    IDocument newer = Model.GetDocument(Keys.Previous);
-    IDocument older = Model.GetDocument(Keys.Next);
+  IDocument newer = Model.GetDocument(Keys.Previous);
+  IDocument older = Model.GetDocument(Keys.Next);
 }
 @if (older != null || newer != null)
 {
-    <div>
-        <div class="float-sm-start">
-            @if (newer != null)
-            {
-                <a class="btn btn-primary" href="@Context.GetLink(newer)" role="button"><i class="fas fa-angle-double-left"></i> Newer</a>
-            }
-        </div>
-        <div class="float-sm-end">
-            @if (older != null)
-            {
-                <a class="btn btn-primary" href="@Context.GetLink(older)" role="button">Older <i class="fas fa-angle-double-right"></i></a>
-            }
-        </div>
-        <div class="clearfix"></div>
+  <div>
+    <div class="float-sm-start">
+      @if (newer != null)
+      {
+        <a class="btn btn-primary" href="@Context.GetLink(newer)" role="button"><i class="fas fa-angle-double-left"></i> Newer</a>
+      }
     </div>
+    <div class="float-sm-end">
+      @if (older != null)
+      {
+        <a class="btn btn-primary" href="@Context.GetLink(older)" role="button">Older <i class="fas fa-angle-double-right"></i></a>
+      }
+    </div>
+    <div class="clearfix"></div>
+  </div>
 }
