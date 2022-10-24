@@ -1,0 +1,10 @@
+blockquote {
+  font-style: normal;
+  color: $black;
+  background-color: $gray-200;
+  padding: 1rem 1rem 1rem 3rem;
+  border-left: 1rem solid $gray-500;
+
+  & > :first-child { margin-top: 0; }
+  & > :last-child { margin-bottom: 0; }
+}
