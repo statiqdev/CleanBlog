@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+@{
+  var isPost = Document.GetBool("IsPost") && !Document.GetBool("IsArchive");
+}
 
 <head>
 
@@ -88,7 +91,7 @@
     <div class="row">
       <div id="content" class="col-md-12">
         @RenderBody()
-        @if (Document.GetBool("IsPost"))
+        @if (isPost)
         {
           @Html.Partial("_post-footer")
         }
