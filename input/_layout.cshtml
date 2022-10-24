@@ -84,8 +84,13 @@
         {
           @Html.Partial("_post-footer")
         }
+        @Html.Partial("_content-footer")
       </div>
     </div>
+    @if (isPost)
+    {
+      @Html.Partial("_post-comments")
+    }
   </div>
 
   <hr>
