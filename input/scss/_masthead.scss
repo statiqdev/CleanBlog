@@ -1,7 +1,7 @@
 header.masthead {
   &.no-image {
     background-origin: padding-box;
-    background-image: linear-gradient(180deg, scale-color($masthead-main-color, $lightness: +25%) 0%, scale-color($masthead-main-color, $lightness: -25%) 100%);
+    background-image: linear-gradient(180deg, tint-color($masthead-main-color, $masthead-gradient-spread) 0%, shade-color($masthead-main-color, $masthead-gradient-spread) 100%);
 
   &::before {
       display: none;
