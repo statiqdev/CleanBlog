@@ -1,4 +1,6 @@
-IsArchive: true
+ShowInNavbar: => GetInt("Index") == 0
+Order: 100
+Title: Tags
 ArchiveSources: => GetString("PostSources")
 ArchiveFilter: => GetBool("IsPost")
 ArchiveKey: Tags
@@ -8,7 +10,6 @@ ArchiveDestination: >
 ArchivePageSize: 10
 ArchiveOrderKey: Published
 ArchiveOrderDescending: true
-Title: Tags
 ArchiveTitle: => GetString("GroupKey")
 ---
 @if (Document.ContainsKey(Keys.GroupKey))

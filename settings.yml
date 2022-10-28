@@ -9,5 +9,7 @@ PageTitle: |
   }
 Copyright: => $"Copyright © {DateTime.Now.Year}"
 PostSources: posts/**/*
-IsPost: => Outputs.FilterSources(Context.GetString("PostSources")).ContainsById(Document)
+IsPost: => Context.Outputs.FilterSources(Context.GetString("PostSources")).ContainsById(Document)
+PageSources: pages/**/*
+IsPage: => Context.Outputs.FilterSources(Context.GetString("PageSources")).ContainsById(Document)
 Layout: /_layout.cshtml

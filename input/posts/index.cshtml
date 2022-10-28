@@ -1,4 +1,7 @@
-IsArchive: true
+ShowInNavbar: => GetInt("Index") <= 1
+Order: 99
+IsPostArchive: true
+Title: Posts
 ArchiveSources: => GetString("PostSources")
 ArchiveFilter: => GetBool("IsPost")
 ArchiveOrderKey: Published
