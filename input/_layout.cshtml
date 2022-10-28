@@ -82,9 +82,9 @@
         @RenderBody()
         @if (isPost)
         {
-          @Html.Partial("_post-footer")
+          @Html.Partial("_post-after-content")
         }
-        @Html.Partial("_content-footer")
+        @Html.Partial("_common-after-content")
       </div>
     </div>
     @if (isPost)
