@@ -13,7 +13,8 @@
   }
   string description = Document.WithoutSettings().GetString("Lead") ?? Document.WithoutSettings().GetString(WebKeys.Description);
   string title = Document.GetString("Title") ?? Document.GetString("SiteTitle");
-  bool isPost = Document.GetBool("IsPost") && !Document.GetBool("IsArchive");
+  bool isPost = Document.GetBool("IsPost") && !Document.GetBool("IsPostArchive");
+  bool isPage = Document.GetBool("IsPage");
   var imageAttribution = Document.GetString("ImageAttribution", string.Empty);
   var hasImageAttribution = !string.IsNullOrEmpty(imageAttribution);
 }
@@ -21,7 +22,7 @@
   <div class="container position-relative">
     <div class="row">
       <div class="col-md-12">
-        <div class='@(isPost ? "post-heading" : "site-heading")'>
+        <div class='@(isPost ? "post-heading" : isPage ? "page-heading" : "site-heading")'>
           <h1>
             @title
             @if (Document.GetInt(Keys.Index) > 1)
