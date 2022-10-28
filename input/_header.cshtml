@@ -14,6 +14,8 @@
   string description = Document.WithoutSettings().GetString("Lead") ?? Document.WithoutSettings().GetString(WebKeys.Description);
   string title = Document.GetString("Title") ?? Document.GetString("SiteTitle");
   bool isPost = Document.GetBool("IsPost") && !Document.GetBool("IsArchive");
+  var imageAttribution = Document.GetString("ImageAttribution", string.Empty);
+  var hasImageAttribution = !string.IsNullOrEmpty(imageAttribution);
 }
 <header class="@mastheadClass" style="@mastheadStyle">
   <div class="container position-relative">
@@ -51,4 +53,8 @@
       </div>
     </div>
   </div>
+  @if (hasImageAttribution)
+  {
+    <div class="image-attribution badge text-bg-secondary rounded-pill">@Html.Raw(imageAttribution)</div>
+  }
 </header>
