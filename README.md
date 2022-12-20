@@ -171,6 +171,7 @@ These can be set in front matter, a sidecar file, etc. (in addition to any of St
 - `Published`: The date a page or post was published.
 - `Image`: Path to an image for the page or post.
 - `ImageAttribution`: Raw HTML of copyright attribution for the image.
+- `ImageAttributionMarkdown`: Markdown of copyright attribution for the image (`ImageAttribution` will be used instead of this if it's defined, so make sure only `ImageAttributionMarkdown` is defined if you want to use it).
 - `ShowInNavbar`: Set to `false` to hide a static page in the top navigation bar.
 - `IsPost`: Set to `false` to exclude the file from the set of posts. This will also disable post styling like displaying tags in the header.
 - `IsPage`: Set to `false` to exclude the file from the set of static pages. This will also disable navigation bar linking.
