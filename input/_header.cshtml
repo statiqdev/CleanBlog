@@ -17,8 +17,6 @@
   bool isPage = Document.GetBool("IsPage");
   var imageAttribution = Document.GetString("ImageAttribution", string.Empty);
   var hasImageAttribution = !string.IsNullOrEmpty(imageAttribution);
-  var imageAttributionMarkdown = Document.GetString("ImageAttributionMarkdown", string.Empty);
-  var hasImageAttributionMarkdown = !string.IsNullOrEmpty(imageAttributionMarkdown);
 }
 <header class="@mastheadClass" style="@mastheadStyle">
   <div class="container position-relative">
@@ -58,10 +56,6 @@
   </div>
   @if (hasImageAttribution)
   {
-    <div class="image-attribution badge text-bg-secondary rounded-pill">@Html.Raw(imageAttribution)</div>
-  }
-  else if (hasImageAttributionMarkdown)
-  {
-    <div class="image-attribution badge text-bg-secondary rounded-pill"><?# Markdown ?>@Html.Raw(imageAttributionMarkdown)<?#/ Markdown ?></div>
+    <div class="image-attribution badge text-bg-secondary rounded-pill"><?# Markdown ?>@Html.Raw(imageAttribution)<?#/ Markdown ?></div>
   }
 </header>
