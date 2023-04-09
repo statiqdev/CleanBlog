@@ -41,7 +41,7 @@
   <meta property="og:title" content='@Document.GetString("PageTitle")' />
   @if (Document.ContainsKey(WebKeys.Image))
   {
-    <meta property="og:image" content='@Context.GetLink(Document.GetString(WebKeys.Image))' />
+    <meta property="og:image" content='@Context.GetLink(Document.GetString(WebKeys.Image), true)' />
   }
   <meta property="og:type" content="website" />
   <meta property="og:url" content='@Document.GetLink(true)' />
