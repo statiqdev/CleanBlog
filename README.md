@@ -16,7 +16,7 @@ Statiq themes go in a `theme` folder alongside your `input` folder. If your site
 git submodule add https://github.com/statiqdev/CleanBlog.git theme
 ```
 
-Alternatively you can clone the theme directly:
+Alternatively, you can clone the theme directly:
 
 ```shell
 git clone https://github.com/statiqdev/CleanBlog.git theme
@@ -158,6 +158,8 @@ These can be set in a settings file (in addition to any of Statiq's [settings](h
 - `SiteDescription`: The subtitle shown on the home (index) page.
 - `PostSources`: A globbing pattern where to find blog posts (defaults to `posts/**/*`).
 - `PageSources`: A globbing pattern where to find static pages (defaults to `pages/**/*`).
+
+It's also highly recommended to set `Host` and `LinksUseHttps` to match your hosting environment. This ensures that the RSS feeds and other artifacts that rely on absolute hosting information are correctly generated.
 
 ### Page
 
