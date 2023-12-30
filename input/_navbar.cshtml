@@ -1,4 +1,4 @@
-@foreach(IDocument doc in Context.OutputPages.Where(x => x.GetBool("ShowInNavbar", x.GetBool("IsPage"))).OrderBy(x => x.GetInt(Keys.Order)))
+@foreach(IDocument doc in Context.OutputPages.Where(x => x.GetBool("ShowInNavbar", false)).OrderBy(x => x.GetInt(Keys.Order)))
 {
   // Pages get added to the navigation bar by default,
   // other pages (including posts) only if they have ShowInNavbar set to true
